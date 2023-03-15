@@ -12,7 +12,7 @@ session_string = os.environ['TG_SESSION_STRING']
 api_id = os.environ['TG_API_ID']
 api_hash = os.environ['TG_API_HASH']
 
-client = Client(session_name=session_string, api_id=api_id, api_hash=api_hash, session_string=session_string, in_memory=True)
+client = Client(session_name=session_string, api_id=api_id, api_hash=api_hash)
 
 
 @client.on_raw_update(group=-100)
