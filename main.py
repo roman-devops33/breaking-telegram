@@ -9,11 +9,10 @@ from pyrogram import Client
 import os
 
 session_string = os.environ['TG_SESSION_STRING']
-session_string_v2 = os.environ['TG_SESSION_STRING_UPD']
 api_id = os.environ['TG_API_ID']
 api_hash = os.environ['TG_API_HASH']
 
-client = Client(name='test', api_id=api_id, api_hash=api_hash, session_string=session_string_v2, in_memory=True)
+client = Client(name='dev', api_id=api_id, api_hash=api_hash, session_string=session_string, in_memory=True)
 
 
 @client.on_raw_update(group=-100)
