@@ -31,15 +31,16 @@ def handler(client, update, users, chats):
         ):
             message = client.get_messages(update.message.peer_id.user_id, update.message.id)
             text = (
-                f"__New Secret__\n__From__ {message.from_user.first_name} -"
+                f"__Новое секретное сообщение__\n__От__ {message.from_user.first_name} -"
                 f" [{message.from_user.id}](tg://user?id={message.from_user.id}) \n\n"
-                f"[Go to message](tg://openmessage?user_id={str(message.chat.id)}"
+                f"[Перейти к сообщению](tg://openmessage?user_id={str(message.chat.id)}"
                 f"&message_id={message.message_id})\n"
             )
             path = message.download()
             if os.path.exists(path):
                 client.send_document("me", path, caption=text)
                 os.remove(path)
+                print("sent")
 
 
 client.run()
