@@ -27,7 +27,8 @@ Due to Telegram API Terms of Service, the use of this script is for PoC only.
 - Go to https://my.telegram.org/auth?to=apps;
 - Create an app(doesn't matter how do you call it);
 - Get API ID and API KEYS;
-- Replace them in `config.ini.example` and save it as `config.ini`
+- Go to <https://replit.com/@dashezup/generate-pyrogram-session-string>;
+- Get sesion string
 
 ### Step 2
 
