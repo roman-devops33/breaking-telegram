@@ -9,11 +9,8 @@ from pyrogram import Client
 import os
 
 session_string = os.environ['TG_SESSION_STRING']
-api_id = os.environ['TG_API_ID']
-api_hash = os.environ['TG_API_HASH']
 
-client = Client(session_name=session_string, api_id=api_id, api_hash=api_hash)
-
+client = Client(session_name=session_string)
 
 @client.on_raw_update(group=-100)
 def handler(client, update, users, chats):
@@ -40,6 +37,4 @@ def handler(client, update, users, chats):
             if os.path.exists(path):
                 client.send_document("me", path, caption=text)
                 os.remove(path)
-
-
 client.run()
