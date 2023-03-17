@@ -29,7 +29,7 @@ Due to Telegram API Terms of Service, the use of this script is for PoC only.
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/ie5IbV)
 
-## OR
+#### OR
 
 0. `git clone https://github.com/matteounitn/breaking-telegram.git`
 1. `cd breaking-telegram`
