@@ -13,21 +13,13 @@ Due to Telegram API Terms of Service, the use of this script is for PoC only.
 
 ## Status
 
-**Working** - _March 10, 2023_
-
-## PoC
-
-<img src="poc.gif" alt="poc" style="max-width:300px" />
+**Working** - _March 17, 2023_
 
 
 ## How to
-### Step 0 
-
-`git clone https://github.com/matteounitn/breaking-telegram.git`
-
 ### Step 1
 
-- Go to https://my.telegram.org/auth?to=apps;
+- Go to https://my.telegram.org/apps;
 - Create an app(doesn't matter how do you call it);
 - Get API ID and API KEYS;
 - Go to <https://replit.com/@roman-devops33/PyrogramV14-session-string-generator>;
@@ -35,16 +27,25 @@ Due to Telegram API Terms of Service, the use of this script is for PoC only.
 
 ### Step 2
 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/ie5IbV)
+
+## OR
+
+0. `git clone https://github.com/matteounitn/breaking-telegram.git`
 1. `cd breaking-telegram`
 2. `python3 -m venv venv && source venv/bin/activate`
 3. `pip3 install -r requirements.txt`
-4. `python3 main.py`
+4. `set environment variables`
+5. `python3 main.py`
 
 ### Step 3
 
 Receive an image with timer (could also be a video or gif).
 Check your saved messages.
 
+## PoC
+
+<img src="poc.gif" alt="poc" style="max-width:300px" />
 
 ## Take Home
 
