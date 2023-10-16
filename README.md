@@ -1,10 +1,7 @@
 # breaking-telegram
 Simple PoC script that allows you to exploit telegram's "send with timer" feature by saving any media sent with this functionality.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/ie5IbV)
-
 ## ⚠️ Disclaimer
-
 Due to Telegram API Terms of Service, the use of this script is for PoC only.
 > 1.4. It is forbidden to interfere with the basic functionality of Telegram. This includes but is not limited to: making actions on behalf of the user without the user's knowledge and consent, **preventing self-destructing content from disappearing**, preventing last seen and online statuses from being displayed correctly, tampering with the 'read' statuses of messages (e.g. implementing a 'ghost mode'), preventing typing statuses from being sent/displayed, etc.
 [Telegram API Terms of Service -  Privacy & Security - 1.4](https://core.telegram.org/api/terms#1-privacy--security)
@@ -13,7 +10,7 @@ Due to Telegram API Terms of Service, the use of this script is for PoC only.
 
 ## Status
 
-**Working** - _March 17, 2023_
+**Working** - _June 29, 2023_
 
 
 ## How to
