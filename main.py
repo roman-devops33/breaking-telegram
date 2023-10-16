@@ -17,7 +17,7 @@ app = Client(name="default", session_string=session_string, api_id=api_id, api_h
 
 
 @app.on_raw_update(group=-100)
-def handler(app, update, users, chats):
+async def handler(app, update, users, chats):
     if isinstance(update, UpdateNewMessage) and not isinstance(
             update.message, MessageService
     ):
@@ -30,16 +30,16 @@ def handler(app, update, users, chats):
                 and update.message.out is False
                 and update.message.media.ttl_seconds is not None
         ):
-            message = app.get_messages(update.message.peer_id.user_id, update.message.id)
+            message = await app.get_messages(update.message.peer_id.user_id, update.message.id)
             text = (
                 f"__New Secret__\n__From__ {message.from_user.first_name} -"
                 f" [{message.from_user.id}](tg://user?id={message.from_user.id}) \n\n"
                 f"[Go to message](tg://openmessage?user_id={str(message.chat.id)}"
                 f"&message_id={message.id})\n"
             )
-            path = message.download()
+            path = await message.download()
             if os.path.exists(path):
-                app.send_document("me", path, caption=text)
+                await app.send_document("me", path, caption=text)
                 os.remove(path)
 
 
