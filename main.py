@@ -6,30 +6,31 @@ from pyrogram.raw.types import (
     MessageService,
 )
 from pyrogram import Client
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import os
 
 session_string = os.environ['TG_SESSION_STRING']
 api_id = os.environ['TG_API_ID']
 api_hash = os.environ['TG_API_HASH']
 
-client = Client(name="default", session_string=session_string, api_id=api_id, api_hash=api_hash)
+app = Client(name="default", session_string=session_string, api_id=api_id, api_hash=api_hash)
 
 
-@client.on_raw_update(group=-100)
-def handler(client, update, users, chats):
+@app.on_raw_update(group=-100)
+def handler(app, update, users, chats):
     if isinstance(update, UpdateNewMessage) and not isinstance(
-        update.message, MessageService
+            update.message, MessageService
     ):
         if (
-            (
-                isinstance(update.message.media, MessageMediaDocument)
-                or isinstance(update.message.media, MessageMediaPhoto)
-            )
-            and isinstance(update.message.peer_id, PeerUser)
-            and update.message.out is False
-            and update.message.media.ttl_seconds is not None
+                (
+                        isinstance(update.message.media, MessageMediaDocument)
+                        or isinstance(update.message.media, MessageMediaPhoto)
+                )
+                and isinstance(update.message.peer_id, PeerUser)
+                and update.message.out is False
+                and update.message.media.ttl_seconds is not None
         ):
-            message = client.get_messages(update.message.peer_id.user_id, update.message.id)
+            message = app.get_messages(update.message.peer_id.user_id, update.message.id)
             text = (
                 f"__New Secret__\n__From__ {message.from_user.first_name} -"
                 f" [{message.from_user.id}](tg://user?id={message.from_user.id}) \n\n"
@@ -38,8 +39,16 @@ def handler(client, update, users, chats):
             )
             path = message.download()
             if os.path.exists(path):
-                client.send_document("me", path, caption=text)
+                app.send_document("me", path, caption=text)
                 os.remove(path)
 
 
-client.run()
+async def job():
+    await app.send_message("me", "Breaking telegram in work")
+
+# interval seconds for tests
+scheduler = AsyncIOScheduler()
+scheduler.add_job(job, "interval", weeks=1)
+
+scheduler.start()
+app.run()
