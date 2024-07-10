@@ -1,3 +1,4 @@
 APScheduler~=3.10.4
 Pyrogram==2.0.106
 TgCrypto==1.2.5
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
